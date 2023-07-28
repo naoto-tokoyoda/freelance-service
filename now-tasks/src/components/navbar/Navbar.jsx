@@ -115,7 +115,7 @@ const navbar = () => {
           )
          
         }
-       
+       <hr />
     </div>
   )
 }
