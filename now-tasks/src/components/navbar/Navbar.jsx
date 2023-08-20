@@ -111,11 +111,11 @@ const navbar = () => {
                   Lifestyle
                 </Link>
               </div>
+              <hr />
             </>
           )
          
         }
-       <hr />
     </div>
   )
 }
