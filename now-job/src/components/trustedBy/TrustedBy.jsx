@@ -1,5 +1,5 @@
 import React from "react";
-import "./trustedBy.scss";
+import "./TrustedBy.scss";
 
 const TrustedBy = () => {
   return (
