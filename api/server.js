@@ -2,6 +2,9 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
+import userRoute from "./routes/user.routes.js";
+
+
 // Initialize dotenv
 dotenv.config();
 
@@ -19,6 +22,9 @@ const connectToMongoDB = async () => {
         console.error("Error connecting to MongoDB:", error);
     }
 };
+
+app.use("/api/users", userRoute);
+
 
 // Start the Express server
 const startServer = () => {
