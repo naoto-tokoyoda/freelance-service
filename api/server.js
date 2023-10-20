@@ -2,16 +2,19 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-import userRoute from "./routes/user.routes.js";
+import conversationRoute from "./routes/conversation.route.js";
+import gigRoute from "./routes/gig.route.js";
+import messageRoute from "./routes/message.route.js";
+import orderRoute from "./routes/order.route.js";
+import reviewRoute from "./routes/review.route.js";
+import userRoute from "./routes/user.route.js";
 
-
-// Initialize dotenv
+// Initialize dotenv and express app
 dotenv.config();
-
-// Configure Mongoose
-mongoose.set('strictQuery', true);
-
 const app = express();
+
+// Mongoose configuration
+mongoose.set('strictQuery', true);
 
 // MongoDB connection function
 const connectToMongoDB = async () => {
@@ -23,16 +26,22 @@ const connectToMongoDB = async () => {
     }
 };
 
+// API routes
+app.use("/api/conversations", conversationRoute);
+app.use("/api/gigs", gigRoute);
+app.use("/api/orders", orderRoute);
+app.use("/api/messages", messageRoute);
+app.use("/api/reviews", reviewRoute);
 app.use("/api/users", userRoute);
 
-
 // Start the Express server
+const PORT = 8800;
 const startServer = () => {
-    app.listen(8800, () => {
-        console.log("Backend server is running on port 8800");
+    app.listen(PORT, () => {
+        console.log(`Backend server is running on port ${PORT}`);
     });
     connectToMongoDB();
 };
 
-// Start the server
+// Execute server start
 startServer();
